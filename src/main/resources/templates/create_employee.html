@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/1717b30b2a.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Add New Employee</title>
+</head>
+<body>
+<style>
+    .pushContent{margin-top:90px}
+</style>
+<div>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Payroll Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employees}">Payroll Management Dashboard</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<div class="container pushContent">
+    <div class="row mt-5">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Add Employee <i class="fa-solid fa-user-graduate"></i></h1>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid Information Provided. Kindly cross-check all input</div>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/add/employee}" th:object="${employee}" method="post">
+                    <div class="form-group ">
+                        <label>Employee No.</label>
+                        <input
+                                type="number"
+                                min="1"
+                                name="employeeNo"
+                                field="*{employeeNo}"
+                                class="form-control"
+                                placeholder="Enter employee No">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>First Name</label>
+                        <input
+                        type="text"
+                        name="firstName"
+                        field="*{firstName}"
+                        class="form-control"
+                        placeholder="Enter employee First Name">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Last Name</label>
+                        <input
+                                type="text"
+                                name="lastName"
+                                field="*{lastName}"
+                                class="form-control"
+                                placeholder="Enter employee Last Name">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Phone No</label>
+                        <input
+                                type="text"
+                                name="phoneNumber"
+                                field="*{phoneNumber}"
+                                class="form-control"
+                                placeholder="Enter Employee Phone No.">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="department">Department</label>
+                        <select class="form-select" id="department" name="department" field="*{department}">
+                            <option value="null" selected="">Select Department</option>
+                            <option value="Marketing" name="department">Marketing</option>
+                            <option value="Engineering" name="department">Engineering</option>
+                            <option value="Security" name="department">Security</option>
+                            <option value="Projects" name="department">Projects</option>
+                            <option value="Client Service" name="department">Client Service</option>
+                            <option value="Human Resource" name="department">Human Resource</option>
+                            <option value="Research" name="department">Research</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="position">Position</label>
+                        <select class="form-select" id="position" name="position" field="*{position}">
+                            <option value="null" selected="">Select Position</option>
+                            <option value="Finance Officer" name="position">Finance Officer</option>
+                            <option value="Back-End Engineer" name="position">Back-End Engineer</option>
+                            <option value="Front-End Engineer" name="position">Front-End Engineer</option>
+                            <option value="Devops Engineer" name="position">Devops Engineer</option>
+                            <option value="QA Engineer" name="position">QA Engineer</option>
+                            <option value="UI/UX Designer" name="position">UI/UX Designer</option>
+                            <option value="Security Officer" name="position">Security Officer</option>
+                            <option value="Project Coordinator" name="position">Project Coordinator</option>
+                            <option value="Client Service Specialist" name="position">Client Service Specialist</option>
+                            <option value="Administration" name="position">Administration</option>
+                            <option value="Research Engineer" name="position">Research Engineer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Salary</label>
+                        <input
+                                type="number"
+                                name="salary"
+                                min="1.00"
+                                step="0.01"
+                                field="*{salary}"
+                                class="form-control"
+                                placeholder="0.00">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Employment Date</label>
+                        <input
+                                type="date"
+                                name="employmentDate"
+                                field="*{employmentDate}"
+                                class="form-control"
+                                placeholder="Employment Date">
+                    </div>
+
+                    <div class="box-footer mt-3">
+                        <button type="submit" class="btn btn-outline-dark btn-lg-center">Submit <i class="fa-solid fa-cloud-arrow-up"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

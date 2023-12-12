@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/1717b30b2a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Payroll Management System</title>
+</head>
+<body>
+<style>
+    .pushContent{margin-top:70px}
+</style>
+<div class="">
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Payroll Management System</a>
+
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employees}">Payroll Management Dashboard</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+<div class="container pushContent">
+        <div class="row mt-5">
+            <h1>
+                List of Pay Details
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <a th:href="@{/pay-detail/add/{id}(id=${param.employeeNo})}" class="btn btn-dark btn-md mb-3">Add Pay Details  <i class="fa-solid fa-user-plus" ></i></a>
+            </div>
+            <div class="col-lg-4">
+                <a th:href="@{/bonuses?employeeNo={id}(id=${param.employeeNo})}" class="btn btn-dark btn-md mb-3">View Bonuses  <i class="fa-solid fa-user-plus" ></i></a>
+            </div>
+            <div class="col-lg-4">
+                <a th:href="@{/sick-leaves?employeeNo={id}(id=${param.employeeNo})}" class="btn btn-dark btn-md mb-3">View Sick leaves  <i class="fa-solid fa-user-plus" ></i></a>
+            </div>
+        </div>
+
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th> Start Date </th>
+                <th> Routing No. </th>
+                <th> Account Type </th>
+                <th> Bank Name </th>
+                <th> Bank Address </th>
+                <th> Pay Type </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pay_detail: ${pay_details}" data-toggle="modal" data-target="#staticBackdrop">
+                <td th:text="${pay_detail.startDate}"></td>
+                <td th:text="${pay_detail.routingNumber}"></td>
+                <td th:text="${pay_detail.accountType}"></td>
+                <td th:text="${pay_detail.bankName}"></td>
+                <td th:text="${pay_detail.bankAddress}"></td>
+                <td th:text="${pay_detail.payType.payTypeDescription}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

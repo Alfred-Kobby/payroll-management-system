@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/1717b30b2a.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Update Student Info</title>
+</head>
+<body>
+<style>
+    .pushContent{margin-top:90px}
+</style>
+<div>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Student Management System</a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/employees}">Student Management Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container pushContent">
+    <div class="row mt-5">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Update Student <i class="fa-solid fa-user-graduate"></i></h1>
+            <div class="card-body">
+                <form th:action="@{/students/{id} (id=${employee.id})}" th:object="${employee}" method="post">
+                    <div class="form-group ">
+                        <label>First Name</label>
+                        <input
+                                type="text"
+                                name="firstName"
+                                th:field="*{firstName}"
+                                class="form-control"
+                                placeholder="Enter employee First Name">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Last Name</label>
+                        <input
+                                type="text"
+                                name="lastName"
+                                th:field="*{lastName}"
+                                class="form-control"
+                                placeholder="Enter employee Last Name">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Course Title</label>
+                        <input
+                                type="text"
+                                name="courseTitle"
+                                th:field="*{courseTitle}"
+                                class="form-control"
+                                placeholder="Enter employee Course Title">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Year</label>
+                        <input
+                                type="number"
+                                min="1"
+                                max="4"
+                                name="year"
+                                th:field="*{year}"
+                                class="form-control"
+                                placeholder="Enter employee Year">
+                    </div>
+
+                    <div class="form-floating mt-4">
+                        <select class="form-select" id="floatingSelect" th:field="*{residentialStatus}">
+                            <option th:value="null" selected="">Select status</option>
+                            <option th:value="Yes" name="residentialStatus">Yes</option>
+                            <option th:value="No" name="residentialStatus">No</option>
+                        </select>
+                        <label for="floatingSelect">Residential Status</label>
+                    </div>
+
+                    <div class="box-footer mt-3">
+                        <button type="submit" class="btn btn-outline-dark btn-lg-center">Update <i class="fa-solid fa-user-pen"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
