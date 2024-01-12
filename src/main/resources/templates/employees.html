@@ -41,10 +41,19 @@
             </h1>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-10">
                 <a th:href="@{/employee/add}" class="btn btn-dark btn-md mb-3">Add Employee  <i class="fa-solid fa-user-plus" ></i></a>
             </div>
+            <div class="col-lg-2">
+                <a th:href="@{/backup}" class="btn btn-dark btn-md mb-3">BackUp  <i class="fa-solid fa-database" ></i></a>
+            </div>
         </div>
+    <div th:if="${param.error}">
+        <div class="alert alert-danger">Failed to back up database. Try again later</div>
+    </div>
+    <div th:if="${param.success}">
+        <div class="alert alert-success">Successfully back up database.</div>
+    </div>
         <table class="table table-hover table-striped table-bordered">
             <thead class="table-dark">
             <tr>

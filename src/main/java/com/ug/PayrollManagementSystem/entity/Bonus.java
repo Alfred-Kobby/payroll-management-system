@@ -57,15 +57,15 @@ public class Bonus {
         this.bonusTypeNo = bonusRequest.getBonusTypeNo();
     }
 
-//    @Override
-//    public int hashCode() {
-//        final int prime = 31;
-//        int result = 1;
-//        result = prime * result + ((employeeNo == null) ? 0 : employeeNo.hashCode());
-//        result = prime * result + ((bonusDate == null) ? 0 : bonusDate.hashCode());
-//        result = prime * result + ((bonusAmount == null) ? 0 : bonusAmount.hashCode());
-//        result = prime * result + ((bonusTypeNo == null) ? 0 : bonusTypeNo.hashCode());
-//        // Exclude the related entity from hashCode
-//        return result;
-//    }
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((employeeNo == null) ? 0 : employeeNo.hashCode());
+        result = prime * result + ((bonusDate == null) ? 0 : bonusDate.hashCode());
+        result = prime * result + ((bonusAmount == null) ? 0 : bonusAmount.hashCode());
+        result = prime * result + ((bonusTypeNo == null) ? 0 : bonusTypeNo.hashCode());
+        // Exclude the related entity from hashCode
+        return result;
+    }
 }

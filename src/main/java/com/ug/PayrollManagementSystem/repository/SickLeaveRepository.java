@@ -13,4 +13,7 @@ public interface SickLeaveRepository extends JpaRepository<SickLeave, Integer> {
 
     @Procedure("SICK_LEAVE_DELETE")
     void deleteSickLeave(Integer employeeNo, LocalDate startDate);
+
+
+    void deleteByEmployeeNoAndStartDate(Integer employeeNo, LocalDate startDate);
 }

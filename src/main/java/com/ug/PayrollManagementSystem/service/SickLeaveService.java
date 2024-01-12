@@ -44,6 +44,10 @@ public class SickLeaveService {
         sickLeaveRepository.deleteSickLeave(employeeNo, startDate);
     }
 
+    public void deleteByEmployeeNoAndStartDate(Integer employeeNo, LocalDate startDate){
+        sickLeaveRepository.deleteByEmployeeNoAndStartDate(employeeNo, startDate);
+    }
+
 //    public void updateBonus(BonusRequest bonusRequest, Integer employeeNo, String oldDate){
 //        LocalDate bonusDate = LocalDate.parse(bonusRequest.getBonusDate());
 //        LocalDate oldBonusDate = LocalDate.parse(oldDate);

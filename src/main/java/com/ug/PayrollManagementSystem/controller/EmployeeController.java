@@ -2,6 +2,7 @@ package com.ug.PayrollManagementSystem.controller;
 
 import com.ug.PayrollManagementSystem.entity.Employee;
 import com.ug.PayrollManagementSystem.model.EmployeeRequest;
+import com.ug.PayrollManagementSystem.service.DatabaseBackupService;
 import com.ug.PayrollManagementSystem.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class EmployeeController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    DatabaseBackupService databaseBackupService;
 
     // list all employees
     @GetMapping("/employees")
@@ -81,6 +85,12 @@ public class EmployeeController {
         // save updated employee object
         employeeService.updateEmployee(existingEmployee);
         return "redirect:/employee";
+    }
+
+    @GetMapping("/backup")
+    public String backupDatabase(){
+        log.info("Request to backup database");
+        return databaseBackupService.backupDatabase();
     }
 
 //    // handler method for delete student request
